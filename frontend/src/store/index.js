@@ -8,7 +8,7 @@ export const store = reactive({
     monthTitle: "01 January",
     year: 2021,
     firstYear: 2021,
-    firstmonth: 4,
+    firstmonth: 2,
     thisYear: 2023,
     thismonth: 12,
     monthsList: [

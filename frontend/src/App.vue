@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, provide } from 'vue';
 import HelloWorld from './components/HelloWorld.vue'
 import { RouterLink, RouterView } from 'vue-router';
 import MenuIcon from './components/icons/MenuIcon.vue';
@@ -15,12 +15,16 @@ function t() {
   fullWidth.value = !fullWidth.value
 }
 
+onMounted(() => document.addEventListener('contextmenu', event => event.preventDefault()))
+
+provide('sidebarOpen', fullWidth)
 </script>
 
 <template>
   <div class="w-full min-h-screen flex relative overflow-hidden">
-    <button v-wave class="fixed top-2 left-2 px-2 py-1 rounded duration-75 hover:bg-white hover:bg-opacity-10 z-50"
-      @click="t">
+    <button
+      :class="fullWidth ? 'duration-150 border aspect-square rounded-full backdrop-blur hover:bg-opacity-50 p-3' : 'hover:bg-white px-2 py-1'"
+      v-wave class="fixed top-2 left-2 border-white border-opacity-25 rounded duration-75 hover:bg-opacity-10 z-50" @click="t">
       <MenuIcon class="fill-white opacity-75" />
     </button>
 
@@ -37,7 +41,7 @@ function t() {
       </div>
 
       <!-- Page -->
-      <div class="min-h-screen overflow-y-scroll duration-150 transition-all" :class="fullWidth ? 'f-w': 'f-z'">
+      <div class="min-h-screen overflow-y-scroll duration-150 transition-all" :class="fullWidth ? 'f-w' : 'f-z'">
         <RouterView />
       </div>
     </div>
@@ -55,4 +59,5 @@ function t() {
 
 .f-z {
   width: calc(100vw - 288px);
-}</style>
+}
+</style>

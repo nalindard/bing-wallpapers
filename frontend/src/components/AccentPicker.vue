@@ -1,12 +1,12 @@
 <template>
     <div>
-        <input type="radio" name="accent" class="accent-emerald-400 h-7 content-none w-7 bg-transparent">
-        <input type="radio" name="accent" class="accent-emerald-400 h-7 content-none w-7 bg-transparent">
-        <input type="radio" name="accent" class="accent-emerald-400 h-7 content-none w-7 bg-transparent">
-        <input type="radio" name="accent" class="accent-emerald-400 h-7 content-none w-7 bg-transparent">
-        <input type="radio" name="accent" class="accent-emerald-400 h-7 content-none w-7 bg-transparent">
-        <input type="radio" name="accent" class="accent-emerald-400 h-7 content-none w-7 bg-transparent">
-        <input type="radio" name="accent" class="accent-emerald-400 h-7 content-none w-7 bg-transparent">
+        <input type="radio" name="accent" class="border-emerald-400 h-7 content-none w-7 bg-transparent">
+        <input type="radio" name="accent" class="border-emerald-400 h-7 content-none w-7 bg-transparent">
+        <input type="radio" name="accent" class="border-emerald-400 h-7 content-none w-7 bg-transparent">
+        <input type="radio" name="accent" class="border-emerald-400 h-7 content-none w-7 bg-transparent">
+        <input type="radio" name="accent" class="border-emerald-400 h-7 content-none w-7 bg-transparent">
+        <input type="radio" name="accent" class="border-emerald-400 h-7 content-none w-7 bg-transparent">
+        <input type="radio" name="accent" class="border-emerald-400 h-7 content-none w-7 bg-transparent">
     </div>
 </template>
 
@@ -16,7 +16,7 @@ input[type="radio"] {
 	-webkit-appearance: none;
 	width: 20px;
 	height: 20px;
-	border: 1px solid #fff;
+	border: 1px solid;
 	border-radius: 50%;
 	margin-right: 10px;
 	background-color: transparent;
@@ -24,10 +24,10 @@ input[type="radio"] {
 	top: 6px;
     transition: all .2s;
 }
-input[type="radio"]:checked {
+/* input[type="radio"]:checked {
     border-color: red;
     background-color: #00000024;
-}
+} */
 
 /* input[type="radio"]:checked::before {
 	content: "";

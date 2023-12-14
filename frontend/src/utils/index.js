@@ -1,13 +1,24 @@
 import { store } from "../store"
+import { useRouter } from "vue-router"
+
+const router = useRouter()
 
 //@ts-check
 
 
 export async function get(link) {
     // const res = await fetch('https://raw.githubusercontent.com/niumoo/bing-wallpaper/main/docs/2021-02.html', { cache: 'force-cache' })
-    const res = await fetch(link, { cache: 'force-cache' })
-    const htmlData = await res.text()
-    return htmlData
+
+    let cache = (store.year == store.thisYear) && (store.month == store.thismonth) ? 'default' : 'force-cache'
+
+    try {
+        const res = await fetch(link, { cache: cache })
+        const htmlData = await res.text()
+        return htmlData
+    } catch (error) {
+        handleErr(error)
+        return `Error:${error}`
+    }
 }
 
 /*
@@ -20,9 +31,14 @@ export function getJson(htmlString) {
     let jsonData = []
 
     const parser = new DOMParser()
-    const html_ = parser.parseFromString(htmlString, 'text/html')
-    const nodeList = html_.querySelectorAll('.w3-third');
-    [...nodeList].forEach(node => jsonData.push(nodeToData(node)))
+    try {
+        const html_ = parser.parseFromString(htmlString, 'text/html')
+        const nodeList = html_.querySelectorAll('.w3-third');
+        [...nodeList].forEach(node => jsonData.push(nodeToData(node)))
+    } catch (error) {
+        handleErr(error)
+        jsonData = [{ "Error": "Faild to pass json" }]
+    }
 
     return jsonData
 }
@@ -49,4 +65,9 @@ function nodeToData(node) {
 
 export function getSrcLink() {
     return `https://raw.githubusercontent.com/niumoo/bing-wallpaper/main/docs/${store.year}-${store.getMonth()}.html`
+}
+
+export function handleErr(error) {
+    window.err = error
+    router.push('404')
 }

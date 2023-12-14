@@ -10,7 +10,7 @@ const consts = {
         }
         return `${year}${month}`;
     },
-    srcLink: function (date = "202002") {
+    srcLink: function (date = "202102") {
         return `${this.baseUrl}${date.slice(0, 4)}-${date.slice(4)}.html`
     }
 }

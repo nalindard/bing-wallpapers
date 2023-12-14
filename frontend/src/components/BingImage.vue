@@ -5,7 +5,7 @@ const emit = defineEmits(['proceed'])
 
 <template>
     <div @click="emit('proceed', data)" class="img aspect-video rounded overflow-hidden bg-white bg-opacity-5 border border-white border-opacity-40 shadow-lg relative">
-        <img loading="lazy" v-shared-element:[data?.img] :src="data?.bigThumbnail" alt="thumbnail" class="absolute inset-0">
+        <img loading="lazy" v-shared-element:[data?.img] :src="data?.bigThumbnail" alt="thumbnail" class="absolute w-full inset-0">
         <h2 class="absolute bottom-1 right-1 backdrop-blur px-2 text-sm shadow">{{ data?.date || 'Date' }}</h2>
         <!-- <p>{{ data || 'Error' }}</p> -->
     </div>
@@ -14,7 +14,7 @@ const emit = defineEmits(['proceed'])
 <style scoped>
 .img{
     min-width: 288px;
-    max-width: 33%;
+    max-width: 50%;
     flex-grow: 1;
 }
 </style>

@@ -11,29 +11,37 @@ const route = useRoute()
 const router = useRouter()
 // router.back()
 const downloadBtn = ref(null)
+const setWallBtn = ref(null)
+const setWallBtnDisabled = ref(false)
 
-const type = ref("")
+// const type = ref("")
 
-onMounted(() => {
+// onMounted(() => {
     // let id = route.params.id
-    type.value = route.query?.type || 'peapix'
+    // type.value = route.query?.type || 'peapix'
     // content.value = type
     // searchFor(id, type)
 
     // console.log(route.query);
-})
+// })
 
 
 
 async function setWallpaper() {
     // alert('setting', route.query?.fullUrl)
-    if (type.value === 'peapix') {
-        await SetWallpaper(route.query?.fullUrl)
-    } else if (type.value === 'bing') {
-        await SetWallpaper(getResolution())
-    } else {
-        return
-    }
+    // if (type.value === 'peapix') {
+        // await SetWallpaper(route.query?.fullUrl)
+    // } else if (type.value === 'bing') {
+        try {
+            setWallBtnDisabled.value = true
+            await SetWallpaper(getResolution())
+        } catch (error) {
+            window.err = error
+        }
+    // } else {
+        // return
+    // }
+    // setWallBtn.value?.disabled = true
 }
 
 function getResolution() {
@@ -60,14 +68,31 @@ function getResolution() {
 }
 
 function downloadImg(size) {
-    if (type.value === 'bing') {   
-        downloadBtn.value?.setAttribute('href', getResolution())
+    // if (type.value === 'bing') {   
+    // alert(getResolution())
+    try {
+        let url = route.query?.bigThumbnail
+        let src
+
+        if (size == 'fhd') {
+            src = url.replace('w=384&h=216', `w=1920&h=1080`)
+        } else if (size == 'wqhd') {
+            src = url.replace('w=384&h=216', `w=2560&h=1440`)
+        } else {
+            src = route.query?.img
+        }
+
+        downloadBtn.value?.setAttribute('href', src)
         downloadBtn.value?.click()
+    } catch (error) {
+        window.err = error
+        router.push('/404')
     }
-    if (type.value == 'peapix'){
-        downloadBtn.value?.setAttribute('href', route.query?.img)
-        downloadBtn.value?.click()
-    }
+    // }
+    // if (type.value == 'peapix'){
+    //     downloadBtn.value?.setAttribute('href', route.query?.img)
+    //     downloadBtn.value?.click()
+    // }
 }
 
 </script>
@@ -82,49 +107,49 @@ function downloadImg(size) {
             :style="`background-image: url(${route.query?.thumbUrl || route.query?.bigThumbnai});`"></div> -->
 
         <div class="absolute inset-0 backdrop:blur-lg">
-            <img v-if="type === 'peapix'" v-shared-element:[route.query?.title] :src="route.query?.thumbUrl" class="w-full"
-                alt="uhdimage">
-            <img v-if="type === 'bing'" v-shared-element:[route.query?.img] :src="route.query?.bigThumbnail" class="w-full"
+            <!-- <img v-if="type === 'peapix'" v-shared-element:[route.query?.title] :src="route.query?.thumbUrl" class="w-full"
+                alt="uhdimage"> -->
+            <img v-shared-element:[route.query?.img] :src="route.query?.bigThumbnail" class="w-full"
                 alt="uhdimage">
             <!--<img v-shared-element:something :src="route.query?.imageUrl" alt="uhdimage">-->
 
             <!-- Real Image -->
-            <!-- <img src="" alt="image" class="w-full"> -->
+            <img :src="getResolution()" alt="image" class="w-full absolute inset-0">
         </div>
 
         <div class="z-50 absolute left-0 w-full bottom-0">
 
             <div class="w-full flex justify-between">
                 <span
-                    class="flex flex-col mb-2 px-2 bg-white bg-opacity-20 hover:bg-opacity-50 duration-150 transition-all">
+                    class="flex flex-col mb-2 px-2 py-1 border border-white border-opacity-25 backdrop-blur hover:bg-opacity-50 duration-150 transition-all ">
                     <!-- <label for="qfhd">Full HD</label>
                     <input type="radio" name="quality" id="qfhd" checked>
                     <label for="qwqhd">2K</label>
                     <input type="radio" name="quality" id="qwqhd">
                     <label for="quhd">4K</label>
                     <input type="radio" name="quality" id="quhd"> -->
-                    <h4 class="text-sm">{{ route.query?.title || 'Title loading' }}</h4>
-                    <h4 class="text-sm">{{ route.query?.copyright || '© Copyright loading' }}</h4>
-                    <h4 class="text-sm">{{ route.query?.date }}</h4>
+                    <h4 class="text-xs font-thin">{{ route.query?.title || 'Title loading' }}</h4>
+                    <h4 class="text-xs font-thin">{{ route.query?.copyright || '© Copyright loading' }}</h4>
+                    <h4 class="text-xs font-thin">{{ route.query?.date }}</h4>
                 </span>
 
-                <span class="flex py-4">
+                <span class="flex items-end py-2">
                     <!-- <link rel="stylesheet" href="" > -->
                     <a ref="downloadBtn" href="" target="_blank" download></a>
-                    <button @click="setWallpaper()"
-                        class="bg-white bg-opacity-20 hover:bg-opacity-50 duration-150 transition-all border text-xl flex justify-between items-center px-2 mr-2">
+                    <button ref="setWallBtn" :disabled="setWallBtnDisabled" @click="setWallpaper()"
+                        class="backdrop-blur hover:bg-opacity-50 duration-150 transition-all border border-white border-opacity-25 flex justify-between items-center px-2 mr-2 text-sm font-light py-2 rounded">
                         <SetWallIcon class="fill-white mr-2" /> Set as wallpaper
                     </button>
                     <button @click="downloadImg('fhd')"
-                        class="bg-white bg-opacity-20 hover:bg-opacity-50 duration-150 transition-all border text-xl flex justify-between items-center mr-2 px-2">
+                        class="backdrop-blur hover:bg-opacity-50 duration-150 transition-all border border-white border-opacity-25 flex justify-between items-center mr-1 px-2 text-sm font-light py-2 rounded">
                         <DownloadIcon class="fill-white mr-2" /> FHD
                     </button>
                     <button @click="downloadImg('wqhd')"
-                        class="bg-white bg-opacity-20 hover:bg-opacity-50 duration-150 transition-all border text-xl flex justify-between items-center mr-2 px-2">
+                        class="backdrop-blur hover:bg-opacity-50 duration-150 transition-all border border-white border-opacity-25 flex justify-between items-center mr-1 px-2 text-sm font-light py-2 rounded">
                         <DownloadIcon class="fill-white mr-2" /> WQHD
                     </button>
                     <button @click="downloadImg('uhd')"
-                        class="bg-white bg-opacity-20 hover:bg-opacity-50 duration-150 transition-all border text-xl flex justify-between items-center mr-2 px-2">
+                        class="backdrop-blur hover:bg-opacity-50 duration-150 transition-all border border-white border-opacity-25 flex justify-between items-center mr-2 px-2 text-sm font-light py-2 rounded">
                         <DownloadIcon class="fill-white mr-2" /> UHD
                     </button>
                     <!-- <button @click="getResolution()" class="bg-emerald-500 text-7xl">screen</button> -->
@@ -141,7 +166,7 @@ function downloadImg(size) {
 
 <style scoped>
 .linear {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(0, 0, 0))
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8))
 }
 </style>
 

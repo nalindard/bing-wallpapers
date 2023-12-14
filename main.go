@@ -19,8 +19,8 @@ func main() {
 	// Create application with options
 	err := wails.Run(&options.App{
 		Title:     "Bing Wallpapers",
-		Width:     1500,
-		Height:    720,
+		Width:     1366,
+		Height:    768,
 		MinWidth:  960,
 		MinHeight: 540,
 		AssetServer: &assetserver.Options{
@@ -30,7 +30,8 @@ func main() {
 		Windows: &windows.Options{
 			WebviewIsTransparent: true,
 			WindowIsTranslucent:  true,
-			BackdropType:         windows.Mica,
+			BackdropType:         windows.Acrylic,
+			Theme:                windows.Dark,
 			// DisableWindowIcon:    true,
 		},
 		OnStartup: app.startup,
