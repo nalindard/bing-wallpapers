@@ -7,7 +7,7 @@ import {
     SharedElementRouteGuard,
     SharedElementDirective
 } from 'v-shared-element'
-import VueDragscroll from "vue-dragscroll";
+// import VueDragscroll from "vue-dragscroll";
 
 
 const app = createApp(App)
@@ -21,6 +21,6 @@ app.use(VWave,
         easing: 'ease-in',
         duration: 0.3
     })
-app.use(VueDragscroll)
+// app.use(VueDragscroll)
 
 app.mount('#app')

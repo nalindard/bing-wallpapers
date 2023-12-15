@@ -1,7 +1,7 @@
 import { store } from "../store"
-import { useRouter } from "vue-router"
+// import { useRouter } from "vue-router"
 
-const router = useRouter()
+// const router = useRouter()
 
 //@ts-check
 
@@ -69,5 +69,5 @@ export function getSrcLink() {
 
 export function handleErr(error) {
     window.err = error
-    router.push('404')
+    // router.push('404')
 }

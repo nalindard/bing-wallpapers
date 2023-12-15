@@ -1,10 +1,8 @@
 <script setup>
 import { onMounted, ref, provide } from 'vue';
-import HelloWorld from './components/HelloWorld.vue'
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterView } from 'vue-router';
 import MenuIcon from './components/icons/MenuIcon.vue';
 import SideBar from './components/SideBar.vue';
-import BackButton from './components/BackButton.vue';
 
 const sideBar = ref(null)
 const fullWidth = ref(!true)
@@ -23,24 +21,19 @@ provide('sidebarOpen', fullWidth)
 <template>
   <div class="w-full min-h-screen flex relative overflow-hidden">
     <button
-      :class="fullWidth ? 'duration-150 border aspect-square rounded-full backdrop-blur hover:bg-opacity-50 p-3' : 'hover:bg-white px-2 py-1'"
-      v-wave class="fixed top-2 left-2 border-white border-opacity-25 rounded duration-75 hover:bg-opacity-10 z-50" @click="t">
+      :class="fullWidth ? 'duration-150 border aspect-square rounded-full backdrop-blur hover:bg-opacity-40 bg-white bg-opacity-10 p-3' : 'hover:bg-white px-2 py-1'"
+      v-wave class="fixed top-2 left-2 border-white border-opacity-25 rounded duration-150 hover:bg-opacity-10 z-50" @click="t">
       <MenuIcon class="fill-white opacity-75" />
     </button>
 
-    <!-- <BackButton /> -->
-
     <div ref="sideBar" class="absolute top-0 left-0 flex transition-all duration-300 min-h-full">
 
-      <!-- Side -->
+      <!-- Sidebar -->
       <div class="w-72">
-        <!-- <RouterLink :to="{ name: 'home' }">Home</RouterLink>
-        <RouterLink :to="{ name: 'image' }">Image</RouterLink>
-        <RouterLink :to="{ name: 'about' }">About</RouterLink> -->
         <SideBar />
       </div>
 
-      <!-- Page -->
+      <!-- Page view -->
       <div class="min-h-screen overflow-y-scroll duration-150 transition-all" :class="fullWidth ? 'f-w' : 'f-z'">
         <RouterView />
       </div>

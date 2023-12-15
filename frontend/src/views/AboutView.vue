@@ -26,7 +26,7 @@
                <br>
                <br>
                This software's entire source code is accessible <a class="text-cyan-400 font-semibold"
-                    href="https://github.com/nalindard/bing-wallpapers">here</a>, and if someone uses this software and
+                    target="_blank" href="https://github.com/nalindard/bing-wallpapers">here</a>, and if someone uses this software and
                somehow
                damages their properties, I am not responsible for that. LOL!
 
@@ -36,17 +36,16 @@
 
           <h2 class="text-xl mt-7 mb-2">Made with</h2>
           <p class="text-xs flex gap-2">
-               <a class="text-xs lowercase" href="https://vuejs.org/">VUEJS 💚</a>
-               <a class="text-xs lowercase" href="https://wails.io/">ON WINDOWS</a>
-               <a class="text-xs lowercase" href="https://pkg.go.dev/github.com/reujab/wallpaper">NATTIVEAPIS</a>
-               <a class="text-xs lowercase" href="https://github.com/niumoo/bing-wallpaper">DATA</a>
-               <a class="text-xs lowercase" href="https://tailwindcss.com/">TAILWINDCSS</a>
-               <a class="text-xs lowercase" href="https://go.dev/">GOLANG</a>
+               <a class="text-xs lowercase" target="_blank" href="https://vuejs.org/">VUEJS 💚</a>
+               <a class="text-xs lowercase" target="_blank" href="https://wails.io/">ON WINDOWS</a>
+               <a class="text-xs lowercase" target="_blank" href="https://pkg.go.dev/github.com/reujab/wallpaper">NATTIVEAPIS</a>
+               <a class="text-xs lowercase" target="_blank" href="https://github.com/niumoo/bing-wallpaper">DATA</a>
+               <a class="text-xs lowercase" target="_blank" href="https://tailwindcss.com/">TAILWINDCSS</a>
+               <a class="text-xs lowercase" target="_blank" href="https://go.dev/">GOLANG</a>
           </p>
 
-          <!-- <hr class="my-4"> -->
           <hr class="my-4">
-          <p class="font-normal">Find me here <span class="text-cyan-400">nalindard@gmail.com</span> </p>
+          <p class="font-light">Find me here <span class="text-cyan-400">nalindard@gmail.com</span> </p>
           <hr class="my-4">
 
      </div>

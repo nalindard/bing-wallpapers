@@ -42,6 +42,5 @@ func main() {
 
 	if err != nil {
 		panic(err)
-		// println("Error:", err.Error())
 	}
 }

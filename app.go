@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	// "fmt"
 
 	"github.com/reujab/wallpaper"
 )
@@ -25,13 +24,6 @@ func (a *App) startup(ctx context.Context) {
 
 // Set wallpaper,
 func (a *App) SetWallpaper(src string) {
-	// background, err := wallpaper.Get()
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// fmt.Println("Current wallpaper:", background)
-
-	// err := wallpaper.SetFromURL("https://cn.bing.com/th?id=OHR.JerseyIsland_EN-US0109101063_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4")
 	if len(src) < 20 {
 		panic("err")
 	}
