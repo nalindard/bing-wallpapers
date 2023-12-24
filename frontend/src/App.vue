@@ -26,7 +26,7 @@ provide('sidebarOpen', fullWidth)
       <MenuIcon class="fill-white opacity-75" />
     </button>
 
-    <div ref="sideBar" class="absolute top-0 left-0 flex transition-all duration-300 min-h-full">
+    <div ref="sideBar" class="absolute top-0 left-0 flex transition-all duration-150 min-h-full">
 
       <!-- Sidebar -->
       <div class="w-72">

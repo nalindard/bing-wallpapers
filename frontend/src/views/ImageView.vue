@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import BackButton from '../components/BackButton.vue';
 import DownloadIcon from '../components/icons/DownloadIcon.vue'
@@ -11,6 +11,13 @@ const router = useRouter()
 const downloadBtn = ref(null)
 const setWallBtn = ref(null)
 const setWallBtnDisabled = ref(false)
+const showOgImage = ref(false)
+
+onMounted(() => {
+    setTimeout(() => {
+        showOgImage.value = true
+    }, 400)
+})
 
 async function setWallpaper() {
     try {
@@ -18,7 +25,7 @@ async function setWallpaper() {
         await SetWallpaper(getResolution())
     } catch (error) {
         window.err = error
-        router.push({name: '404'})
+        router.push({ name: '404' })
     }
 }
 
@@ -56,7 +63,7 @@ function downloadImg(size) {
         downloadBtn.value?.click()
     } catch (error) {
         window.err = error
-        router.push({name: '404'})
+        router.push({ name: '404' })
     }
 }
 
@@ -75,15 +82,16 @@ function camelCaseToWords(s) {
 </script>
 
 <template>
-    <div class="w-full h-full relative overflow-hidden">
+    <div class="w-full h-full relative rounded overflow-hidden">
 
         <BackButton />
-        <div class="absolute inset-0 backdrop:blur-lg">
-            <img v-shared-element:[route.query?.img] :src="route.query?.bigThumbnail" class="w-full rounded p-2 pl-1 pt-0"
-                alt="uhdimage">
+        <div class="absolute inset-0 backdrop:blur-lg p-2 pt-0 rounded-lg overflow-hidden">
+            <img v-shared-element:[route.query?.img] :src="route.query?.bigThumbnail"
+                class="w-full absolute inset-0 rounded-lg overflow-hidden" alt="uhdimage">
 
             <!-- Real Image -->
-            <img :src="getResolution()" alt="image" class="w-full absolute inset-0 rounded p-2 pl-1 pt-0">
+            <img v-show="showOgImage" :src="getResolution()" alt="image"
+                class="w-full absolute inset-0 rounded-lg overflow-hidden">
         </div>
 
         <div class="z-50 absolute left-0 w-full bottom-0">
