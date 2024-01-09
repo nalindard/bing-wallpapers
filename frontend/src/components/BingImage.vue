@@ -13,9 +13,9 @@ const emit = defineEmits(['proceed'])
 </template>
 
 <style scoped>
-.img {
+/* .img {
     min-width: 288px;
     max-width: 50%;
     flex-grow: 1;
-}
+} */
 </style>

@@ -1,14 +1,14 @@
 {
 	"fixed": {
-		"file_version": "{{.Info.ProductVersion}}"
+		"file_version": "0.0.3"
 	},
 	"info": {
 		"0000": {
-			"ProductVersion": "{{.Info.ProductVersion}}",
-			"CompanyName": "{{.Info.CompanyName}}",
-			"FileDescription": "{{.Info.ProductName}}",
-			"LegalCopyright": "{{.Info.Copyright}}",
-			"ProductName": "{{.Info.ProductName}}",
+			"ProductVersion": "0.0.3",
+			"CompanyName": "Und3fin3d",
+			"FileDescription": "Bing daily wallpapers",
+			"LegalCopyright": "MIT",
+			"ProductName": "Wailpapers",
 			"Comments": "{{.Info.Comments}}"
 		}
 	}

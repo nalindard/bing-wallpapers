@@ -18,11 +18,12 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:     "Bing Wallpapers",
-		Width:     1366,
-		Height:    768,
-		MinWidth:  960,
-		MinHeight: 540,
+		Title:         "Bing Wallpapers",
+		Width:         1366,
+		Height:        768,
+		DisableResize: false,
+		MinWidth:      960,
+		MinHeight:     540,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},

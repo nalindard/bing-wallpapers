@@ -46,7 +46,7 @@ const sidebarOpen = inject('sidebarOpen')
         <h2 :class="sidebarOpen ? 'pl-12' : ''" class="text-4xl pb-4 flex justify-between transition-all duration-150"
             v-shared-element:title>Monthly Wallpapers <span class="">{{ time.year }} / {{ time.monthTitle }}</span> </h2>
         <div class="overflow-y-scroll h-full pb-14 mb-20">
-            <div class="w-full flex flex-wrap gap-2 justify-between items-center pb-4">
+            <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-2 justify-between items-center pb-4">
                 <BingImage v-for="j in jsonData" :data="j" :key="j?.date" @proceed="proceedBing" />
             </div>
         </div>

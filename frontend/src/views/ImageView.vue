@@ -60,6 +60,7 @@ function downloadImg(size) {
         }
 
         downloadBtn.value?.setAttribute('href', src)
+        downloadBtn.value?.setAttribute('download', `${getTitle()}.jpg`)
         downloadBtn.value?.click()
     } catch (error) {
         window.err = error
@@ -106,7 +107,7 @@ function camelCaseToWords(s) {
                 </span>
 
                 <span class="flex items-end py-2">
-                    <a ref="downloadBtn" href="" target="_blank" download></a>
+                    <a ref="downloadBtn" href="" target="_blank" download="bing.jpg"></a>
                     <button ref="setWallBtn" :disabled="setWallBtnDisabled" @click="setWallpaper()"
                         class="backdrop-blur hover:bg-opacity-25  bg-white bg-opacity-10 duration-150 transition-all border border-white border-opacity-25 flex justify-between items-center px-2 mr-2 text-sm font-light py-2 rounded">
                         <SetWallIcon class="fill-white mr-2" /> Set as wallpaper
