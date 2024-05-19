@@ -3,7 +3,7 @@
 
 <template>
      <div class="px-20 py-2 font-thin min-h-screen overflow-scroll">
-          <h2 class="text-4xl font-normal" v-shared-element:title>About</h2>
+          <h2 class="text-4xl font-normal">About</h2>
 
           <hr class="my-4">
 
@@ -12,9 +12,7 @@
           <p class="py-2 text-justify text-xs">
                Every picture on this software/app/page is a daily wallpaper from Microsoft Bing.
                Microsoft provided these pictures only for use as wallpaper. I am not the owner of nothing; all the images and
-               photos on this page are the property of their artistic and respective owners. The picture viewing page will
-               show all of the copyright information (some of which are missing and will be updated in the future due to
-               their difficulties in discovering). I load data from a public Github repository.
+               photos on this page are the property of their artistic and respective owners.
                <br>
                <br>
                Additionally, I will remove any photographs that you, the owner, have a problem with if you are the owner of
@@ -45,7 +43,7 @@
           </p>
 
           <hr class="my-4">
-          <p class="font-light">Find me here <span class="text-cyan-400">nalindard@gmail.com</span> </p>
+          <p class="font-light">Find me here <span class="text-cyan-400"><a href="https://github.com/nalindard"  target="_blank">GITHUB</a></span> </p>
           <hr class="my-4">
 
      </div>

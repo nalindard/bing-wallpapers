@@ -12,7 +12,7 @@ const select = (v, t) => emit('select', { value: v, title: t })
 
 <template>
     <label @click="select(data?.value, data?.title)"
-        class="font-thin text-sm py-1 min-h-[1.75rem] h-7 pl-4 border border-transparent hover:bg-white hover:bg-opacity-20 w-full text-left duration-150 transition-all relative rounded overflow-hidden"
+        class="font-thin text-sm py-1 min-h-[1.75rem] h-7 pl-4 border border-transparent hover:bg-white hover:bg-opacity-20 w-full text-left duration-150 transition-all relative overflow-hidden"
         v-wave>
         <input type="radio" :name="name" class="inset-0 absolute border-none bg-transparent w-full h-full pt-1" :checked="data?.value == active">
         <span class="inset-0 absolute pl-4 h-full pt-1">

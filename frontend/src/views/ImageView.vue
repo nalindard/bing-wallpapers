@@ -86,13 +86,13 @@ function camelCaseToWords(s) {
     <div class="w-full h-full relative rounded overflow-hidden">
 
         <BackButton />
-        <div class="absolute inset-0 backdrop:blur-lg p-2 pt-0 rounded-lg overflow-hidden">
+        <div class="absolute inset-0 backdrop:blur-lg p-2 pt-0 overflow-hidden">
             <img v-shared-element:[route.query?.img] :src="route.query?.bigThumbnail"
-                class="w-full absolute inset-0 rounded-lg overflow-hidden" alt="uhdimage">
+                class="w-full absolute inset-0 overflow-hidden" alt="uhdimage">
 
             <!-- Real Image -->
             <img v-show="showOgImage" :src="getResolution()" alt="image"
-                class="w-full absolute inset-0 rounded-lg overflow-hidden">
+                class="w-full absolute inset-0 overflow-hidden">
         </div>
 
         <div class="z-50 absolute left-0 w-full bottom-0">
