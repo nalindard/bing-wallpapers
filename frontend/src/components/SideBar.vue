@@ -63,7 +63,7 @@ onMounted(() => {
         <!-- Year picker -->
         <h2 class="mt-2 text-xl">Year</h2>
         <hr class="bg-white border-none bg-opacity-20 h-[1px] w-full">
-        <div class="flex flex-col items-start h-1/4 overflow-y-scroll overflow-x-hidden w-full pt-2">
+        <div class="flex flex-col-reverse items-start h-1/3 overflow-y-scroll overflow-x-hidden w-full pt-2">
             <SelectBtn @select="ff" v-for="y in years" :key="y.value" :data="y" :name="'year'" :active="time.year" />
         </div>
 
